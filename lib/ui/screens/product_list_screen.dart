@@ -28,19 +28,29 @@ class _ProductListScreenState extends State<ProductListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product list'),
+        actions: [
+          IconButton(onPressed: (){
+            _getProductList();
+          }, icon: const Icon(Icons.refresh),),// refresh button
+        ],
       ),
-      body: Visibility(
-        visible: _getProductListInProgress == false, // Start Display loader
-        replacement:  const Center(
-          child: CircularProgressIndicator(),
-        ),
-        child: ListView.builder(
-          itemCount: productList.length,
-          itemBuilder: (context, index) {
-            return ProductItem(
-              product: productList[index],
-            );
-          },
+      body: RefreshIndicator( // swift refresh
+        onRefresh: () async {
+          _getProductList();
+        },
+        child: Visibility(
+          visible: _getProductListInProgress == false, // Start Display loader
+          replacement:  const Center(
+            child: CircularProgressIndicator(),
+          ),
+          child: ListView.builder(
+            itemCount: productList.length,
+            itemBuilder: (context, index) {
+              return ProductItem(
+                product: productList[index],
+              );
+            },
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -53,6 +63,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   }
 
   Future<void> _getProductList() async {
+    productList.clear(); // refresh button add
     _getProductListInProgress = true;  // Start Display loader
     setState(() {});
     Uri uri = Uri.parse('https://crud.teamrabbil.com/api/v1/ReadProduct');

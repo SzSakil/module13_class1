@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:module13_class1/models/product.dart';
 
 class UpdateProductScreen extends StatefulWidget {
-  const UpdateProductScreen({super.key});
+  const UpdateProductScreen({super.key, required  this.product});
 
   static const String name = '/update-product';
+
+  final Product product;
 
   @override
   State<UpdateProductScreen> createState() => _UpdateProductScreenState();
@@ -37,12 +40,10 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           TextFormField(
             controller: _nameTEController,
             decoration: const InputDecoration(
-                hintText: 'Name',
-                labelText: 'Product name'
-            ),
-            validator: (String? value){
-              if (value?.trim().isEmpty ?? true){
-                return  'Enter product name';
+                hintText: 'Name', labelText: 'Product name'),
+            validator: (String? value) {
+              if (value?.trim().isEmpty ?? true) {
+                return 'Enter product name';
               }
               return null;
             },
@@ -50,11 +51,9 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           TextFormField(
             controller: _priceTEController,
             decoration: const InputDecoration(
-                hintText: 'Price',
-                labelText: 'Product Price'
-            ),
-            validator: (String? value){
-              if (value?.trim().isEmpty ?? true){
+                hintText: 'Price', labelText: 'Product Price'),
+            validator: (String? value) {
+              if (value?.trim().isEmpty ?? true) {
                 return 'Enter product price';
               }
               return null;
@@ -63,11 +62,9 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           TextFormField(
             controller: _totalPriceTEController,
             decoration: const InputDecoration(
-                hintText: 'Total price',
-                labelText: 'Product total price'
-            ),
-            validator: (String? value){
-              if (value?.trim().isEmpty ?? true){
+                hintText: 'Total price', labelText: 'Product total price'),
+            validator: (String? value) {
+              if (value?.trim().isEmpty ?? true) {
                 return 'Enter product total price';
               }
               return null;
@@ -76,11 +73,9 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           TextFormField(
             controller: _quantityTEController,
             decoration: const InputDecoration(
-                hintText: 'Quantity',
-                labelText: 'Product quantity'
-            ),
-            validator: (String? value){
-              if (value?.trim().isEmpty ?? true){
+                hintText: 'Quantity', labelText: 'Product quantity'),
+            validator: (String? value) {
+              if (value?.trim().isEmpty ?? true) {
                 return 'Enter product quantity';
               }
               return null;
@@ -89,11 +84,9 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           TextFormField(
             controller: _codeTEController,
             decoration: const InputDecoration(
-                hintText: 'Code',
-                labelText: 'Product Code'
-            ),
-            validator: (String? value){
-              if (value?.trim().isEmpty ?? true){
+                hintText: 'Code', labelText: 'Product Code'),
+            validator: (String? value) {
+              if (value?.trim().isEmpty ?? true) {
                 return 'Enter product code';
               }
               return null;
@@ -102,23 +95,20 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
           TextFormField(
             controller: _imageTEController,
             decoration: const InputDecoration(
-                hintText: 'Image url',
-                labelText: 'Product Image'
-            ),
-            validator: (String? value){
-              if (value?.trim().isEmpty ?? true){
+                hintText: 'Image url', labelText: 'Product Image'),
+            validator: (String? value) {
+              if (value?.trim().isEmpty ?? true) {
                 return 'Enter product image url';
               }
               return null;
             },
           ),
           const SizedBox(height: 16),
-          ElevatedButton(onPressed: (){}, child: const Text('Update Product'))
+          ElevatedButton(onPressed: () {}, child: const Text('Update Product'))
         ],
       ),
     );
   }
-
 
   @override
   void dispose() {

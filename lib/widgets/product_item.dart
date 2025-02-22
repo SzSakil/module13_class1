@@ -10,7 +10,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-     // leading: Image.network(product.image ?? ''),
+      leading: Image.network(product.image ?? '', width: 48,),
         title: Text(product.productName ?? ''),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +26,11 @@ class ProductItem extends StatelessWidget {
           IconButton(onPressed: () {}, icon: const Icon(Icons.delete)),
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, UpdateProductScreen.name);
+              Navigator.pushNamed(
+                context,
+                UpdateProductScreen.name,
+                arguments: product,
+              );
             },
             icon: const Icon(Icons.edit),
           ),
