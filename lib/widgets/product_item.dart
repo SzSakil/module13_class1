@@ -23,7 +23,9 @@ class ProductItem extends StatelessWidget {
       ),
       trailing: Wrap(
         children: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.delete)),
+          IconButton(onPressed: () {},
+              // TODO: implement delete api
+              icon: const Icon(Icons.delete)),
           IconButton(
             onPressed: () {
               Navigator.pushNamed(
